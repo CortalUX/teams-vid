@@ -26,5 +26,10 @@ block container %}
     </p>
   </div>
 </div>
-
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>Recent videos</h4>
+    {% with blobs =blobs %}{% include 'layout/gallery-view.html' %}{% endwith %}
+  </div>
+</div>
 {% endblock %}

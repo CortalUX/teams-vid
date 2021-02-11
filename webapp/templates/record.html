@@ -2,28 +2,67 @@
 block container %}
 <h1>Record your masterpiece</h1>
 
-<form
-  method="post"
-  enctype="multipart/form-data"
-  action="/file_upload"
-  class="input-group"
->
-  <div class="custom-file">
-    <label class="custom-file-label" for="video_recording" id="upload_label"
-      >Record or Select Video</label
-    >
+<form method="post" enctype="multipart/form-data" action="/file_upload">
+  <div class="form-group">
+    <label for="video_title">Video title</label>
     <input
-      type="file"
-      accept="video/*"
-      capture="user"
-      (change)="getFile($event)"
-      id="video_recording"
-      name="video_recording"
-      class="custom-file-input"
-      aria-labelledby="upload_label"
+      class="form-control"
+      id="video_title"
+      name="video_title"
+      placeholder="What do you want to call this?"
     />
   </div>
-  <!--
+  <div class="form-group">
+    <label for="badge">Badge</label>
+    <select class="form-control" name="badge" id="badge">
+      <option selected>Emerging Tech</option>
+      <option>Innovation</option>
+      <option>Update</option>
+      <option>I'm feeling...</option>
+      <option>Random</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Description (Optional)</label>
+    <textarea
+      class="form-control"
+      name="description"
+      id="description"
+      rows="3"
+    ></textarea>
+  </div>
+  <div class="input-group">
+    <div class="custom-file">
+      <input
+        type="file"
+        accept="video/*"
+        capture="user"
+        (change)="getFile($event)"
+        id="video_recording"
+        name="video_recording"
+        class="custom-file-input"
+        aria-labelledby="upload_label"
+      />
+      <label class="custom-file-label" for="video_recording"
+        >Record or Select Video</label
+      >
+    </div>
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit">Upload</button>
+    </div>
+  </div>
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+      var fileName = $(this).val().split("\\").pop();
+      $(this)
+        .siblings(".custom-file-label")
+        .addClass("selected")
+        .html(fileName);
+    });
+  </script>
+</form>
+<!--
   @if (progress!=100) {
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="@progress"
@@ -39,8 +78,10 @@ block container %}
     <div class="alert alert-success">
         <strong>Upload Complete.</strong> Your video has been uploaded for processing, and will be posted to Teams shortly.
     </div> -->
-  <div class="input-group-append">
-    <button class="btn btn-primary" type="submit">Upload</button>
-  </div>
-</form>
+{% endblock %} {% block header %}
+<script
+  src="https://code.jquery.com/jquery-3.5.1.slim.js"
+  integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
+  crossorigin="anonymous"
+></script>
 {% endblock %}

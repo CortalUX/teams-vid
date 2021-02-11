@@ -2,8 +2,7 @@
 block container %}
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Dummy Title</h4>
-    {{ message }}
+    <h4>{{ title.title() }}</h4>
     <div>
       <iframe
         width="560"
@@ -13,8 +12,9 @@ block container %}
         allowfullscreen
       ></iframe>
     </div>
-    <span class="badge badge-primary">Emerging Tech</span>
-    <p style="font-weight: 300; text-align: left">"Text"</p>
+    <span class="badge badge-primary">{{ badge.title() }}</span>
+    <p>Uploaded {{ elapsed_time}} by <em>@{{ uploader_username }}</em>.</p>
+    <p style="font-weight: 300; text-align: left">{{ description }}</p>
     <div>
       <iframe
         width="800"

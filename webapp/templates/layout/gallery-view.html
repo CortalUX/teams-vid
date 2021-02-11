@@ -1,0 +1,6 @@
+<div class="d-flex align-content-start flex-wrap">
+  {% for blob in blobs %}{% with
+  image_url=blob.image_url,uploader_username=blob.uploader_username,time='10m
+  ago',title=blob.title,uuid=blob.uuid,badge=blob.badge,elapsed_time=blob.elapsed_time
+  %}{% include 'layout/thumbnail.html' %}{% endwith %}{% endfor %}
+</div>
