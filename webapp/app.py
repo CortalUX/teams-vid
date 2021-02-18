@@ -24,7 +24,7 @@ from asgi_auth_github import GitHubAuth
 import uvicorn
 from datetime import datetime, timedelta
 from urllib.parse import quote
-import video_indexer
+from asyncvideoindexer import AsyncVideoIndexer
 import date_funcs
 
 templates = Jinja2Templates(directory="templates")
@@ -286,7 +286,7 @@ async def github_debug(request):
 
 
 async def startup_get_video_indexer():
-    app.state.video_indexer = await video_indexer.AsyncVideoIndexer.create(
+    app.state.video_indexer = await AsyncVideoIndexer.AsyncVideoIndexer.create(
         os.environ.get("VIDEO_INDEXER_ACCOUNT_ID"),
         os.environ.get("VIDEO_INDEXER_KEY"),
         os.environ.get("VIDEO_INDEXER_ACCOUNT_LOCATION"),

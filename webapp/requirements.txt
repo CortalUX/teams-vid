@@ -12,6 +12,7 @@ asgi-auth-github
 aiohttp
 # Required for video indexer
 aiohttp[speedups]
+aio-videoindexer
 # Required for deploying to Azure
 uvicorn
 uvloop
